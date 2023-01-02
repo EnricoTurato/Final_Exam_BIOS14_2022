@@ -1,0 +1,6 @@
+dat = read.csv("exam2022_part1.csv")
+head(dat)
+names(dat)
+View(dat)
+str(dat)
+dat = na.omit(dat)
