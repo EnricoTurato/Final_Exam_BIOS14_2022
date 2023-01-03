@@ -132,7 +132,7 @@ par(bg = "ivory")
 
 plotNormalHistogram(dat_S$LBL, prob = FALSE, col="slategray2", border="slategray",
                     main = "LBL Values with Normal Distribution Overlay", xlab = "LBL [mm]",
-                    linecol="red", lwd=2 )
+                    linecol="red", lwd=2)
 
 
 plotNormalHistogram(dat_S$UBL, prob = FALSE, col="slategray2", border="slategray",
@@ -170,6 +170,59 @@ fitdistr(dat_L$LBL, "normal")
 
 
 fitdistr(dat_L$UBL, "normal")
+
+
+
+##############################################################################
+##############################################################################
+#
+# 4x4 histograms for LBL for the various subdataset
+#
+##############################################################################
+##############################################################################
+
+par(mfrow=c(2,2))
+par(bg = "ivory")
+
+plotNormalHistogram(dat_wet$LBL, prob = FALSE, col="slategray2", border="slategray",xlim = c(10,32),
+                    main = "LBL (wet only) Normal Overlay on Histogram", xlab = "LBL [mm]",
+                    linecol="red", lwd=2 )
+plotNormalHistogram(dat_L$LBL, prob = FALSE, col="slategray2", border="slategray",
+                    main = "LBL (L-species) Normal Overlay on Histogram", xlab = "LBL [mm]",
+                    linecol="red", lwd=2 )
+plotNormalHistogram(dat_dry$LBL, prob = FALSE, col="slategray2", border="slategray",xlim = c(10,32),
+                    main = "LBL (dry only) Normal Overlay on Histogram", xlab = "LBL [mm]",
+                    linecol="red", lwd=2 )
+plotNormalHistogram(dat_S$LBL, prob = FALSE, col="slategray2", border="slategray",
+                    main = "LBL (S-species) Normal Overlay on Histogram", xlab = "LBL [mm]",
+                    linecol="red", lwd=2)
+
+par(oldpar)
+
+##############################################################################
+##############################################################################
+#
+# 4x4 histograms for UBL for the various subdataset
+#
+##############################################################################
+##############################################################################
+
+par(mfrow=c(2,2))
+par(bg = "ivory")
+plotNormalHistogram(dat_wet$UBL, prob = FALSE, col="slategray2", border="slategray",xlim = c(10,30),
+                    main = "UBL (wet only) Normal Overlay on Histogram", xlab = "UBL [mm]",
+                    linecol="red", lwd=2 )
+plotNormalHistogram(dat_L$UBL, prob = FALSE, col="slategray2", border="slategray",
+                    main = "UBL (L-species) Normal Overlay on Histogram", xlab = "UBL [mm]",
+                    linecol="red", lwd=2 )
+plotNormalHistogram(dat_dry$UBL, prob = FALSE, col="slategray2", border="slategray",xlim = c(10,30),
+                    main = "UBL (dry only) Normal Overlay on Histogram", xlab = "UBL [mm]",
+                    linecol="red", lwd=2 )
+plotNormalHistogram(dat_S$UBL, prob = FALSE, col="slategray2", border="slategray",
+                    main = "UBL (S-species) Normal Overlay on Histogram", xlab = "UBL [mm]",
+                    linecol="red", lwd=2)
+par(oldpar)
+
 
 ##############################################################################
 ##############################################################################
@@ -364,7 +417,7 @@ par(bg = "ivory")
 
 plot(c(0.97, 1.03), means[,1], ylim=c(14, 25), xlim=c(0.8, 2.2),
      xlab="Treatment",
-     ylab="Lower bract Length (LBL) [mm]",
+     ylab="Lower Bract Length (LBL) [mm]",
      xaxt="n", las=1, pch=c(21,16), col="white")
 axis(1, 1:2, labels=c("Dry", "Wet"))
 arrows(c(0.97,1.03), means[,1]-ses[,1], c(0.97,1.03),
@@ -380,7 +433,7 @@ legend("topleft", c("Species", "L", "S"),
 
 plot(c(0.97, 1.03), means2[,1], ylim=c(14, 25), xlim=c(0.8, 2.2),
      xlab="Treatment",
-     ylab="Upper bract Length (UBL) [mm]",
+     ylab="Upper Bract Length (UBL) [mm]",
      xaxt="n", las=1, pch=c(21,16), col="white")
 axis(1, 1:2, labels=c("Dry", "Wet"))
 arrows(c(0.97,1.03), means2[,1]-ses2[,1], c(0.97,1.03),
