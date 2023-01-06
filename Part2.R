@@ -1,12 +1,8 @@
-library(ggplot2)
 library(sciplot)
 library(magrittr) 
 library(dplyr)    
-library(glmmTMB)
 library(plyr)
 library(knitr)
-library(PerformanceAnalytics)
-library(psych)
 library(rcompanion)
 library(MASS)
 
@@ -179,34 +175,12 @@ ses = tapply(mean_horns_lenght,
 means
 ses
 
-plot(c(0.97, 1.03), means[,1], ylim=c(160, 200), xlim=c(0.8, 2.2),
-     xlab="Population Density at Birth",
-     ylab="Horns Length (Left-Right Mean) [mm]",
-     xaxt="n", las=1, pch=c(21,16), col="white")
-axis(1, 1:2, labels=c("High", "Low"))
-arrows(c(0.97,1.03), means[,1]-ses[,1], c(0.97,1.03),
-       means[,1]+ses[,1], length=0.05, angle=90, code=3)
-arrows(c(1.97,2.03), means[,2]-ses[,2], c(1.97,2.03),
-       means[,2]+ses[,2], length=0.05, angle=90, code=3)
-segments(0.97, means[1,1], 1.97, means[1,2], lty=2)
-segments(1.03, means[2,1], 2.03, means[2,2])
-points(c(0.97, 1.03), means[,1], pch=c(21,16), bg="white")
-points(c(1.97, 2.03), means[,2], pch=c(21, 16), bg="white")
-legend("topleft", c("Sex", "Female", "Male"),
-       bty="n", pch=c(NA,21,16))
 
 m = lm(mean_horns_lenght~sex*density)
 anova(m)
 summary(m)
 colMeans(means)
 rowMeans(means)
-
-m2 = lm(mean_horns_lenght~sex*density - sex:density)
-anova(m2)
-summary(m2)
-colMeans(means)
-rowMeans(means)
-
 
 
 ################################################################################
@@ -220,31 +194,10 @@ ses2 = tapply(dat$mass,
 means2
 ses2
 
-plot(c(0.97, 1.03), means2[,1], ylim=c(18, 26), xlim=c(0.8, 2.2),
-     xlab="Population Density at Birth",
-     ylab="Body Mass [kg]",
-     xaxt="n", las=1, pch=c(21,16), col="white")
-axis(1, 1:2, labels=c("High", "Low"))
-arrows(c(0.97,1.03), means2[,1]-ses2[,1], c(0.97,1.03),
-       means2[,1]+ses2[,1], length=0.05, angle=90, code=3)
-arrows(c(1.97,2.03), means2[,2]-ses2[,2], c(1.97,2.03),
-       means2[,2]+ses2[,2], length=0.05, angle=90, code=3)
-segments(0.97, means2[1,1], 1.97, means2[1,2], lty=2)
-segments(1.03, means2[2,1], 2.03, means2[2,2])
-points(c(0.97, 1.03), means2[,1], pch=c(21,16), bg="white")
-points(c(1.97, 2.03), means2[,2], pch=c(21, 16), bg="white")
-legend("topleft", c("Sex", "Female", "Male"),
-       bty="n", pch=c(NA,21,16))
 
 m3 = lm(dat$mass~sex*density)
 anova(m3)
 summary(m3)
-colMeans(means2)
-rowMeans(means2)
-
-m4 = lm(dat$mass~sex*density - sex:density)
-anova(m4)
-summary(m4)
 colMeans(means2)
 rowMeans(means2)
 
