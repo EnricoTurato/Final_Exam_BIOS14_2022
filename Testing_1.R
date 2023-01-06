@@ -53,6 +53,7 @@ treatment = as.factor(dat$treat)
 ########
 # dat
 ########
+oldpar = par(no.readonly = TRUE)
 
 par(mfrow=c(1,2))
 par(bg = "ivory")
